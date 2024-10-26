@@ -1,0 +1,8 @@
+# Binaries
+data/
+
+# Python
+__pycache__/
+
+# Environments
+venv/
