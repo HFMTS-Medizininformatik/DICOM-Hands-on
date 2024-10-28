@@ -1,8 +1,7 @@
 import logging
 from pynetdicom.sop_class import DigitalXRayImageStorageForPresentation
 
-from utils import read_dcm  , plot_ds
-from utils import test_assoc, store_ds
+from utils import read_dcm, plot_ds, test_assoc, store_ds
 
 
 logging.basicConfig(level=logging.INFO)
