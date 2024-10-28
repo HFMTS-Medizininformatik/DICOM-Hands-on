@@ -1,6 +1,5 @@
 import logging
 from pydicom import dcmread
-# from pydicom.pixels import pixel_array  # Only with pydicom>=3.0<3.1
 import matplotlib.pyplot as plt
 from pynetdicom import AE
 
@@ -22,14 +21,15 @@ def read_dcm(path):
     return ds
 
 
-"""
-# Only with pydicom>=3.0<3.1
-
 def plot_ds(ds):
     logger.info("function 'plot_ds' start")
 
+    # elem = ds[0x7fe0, 0x0010]
+    # logger.debug(elem)
+    # raw_pixel_data = elem.value
+
     # Convert the pixel data to an ndarray
-    arr = pixel_array(ds)
+    arr = ds.pixel_array
     logger.debug("Array shape: " + str(arr.shape))
     logger.debug("Array data type: " + str(arr.dtype))
 
@@ -38,14 +38,13 @@ def plot_ds(ds):
     plt.show()
 
     logger.info("function 'plot_ds' end")
-"""
 
 
 # Instantiate the application entity as SCU
 ae = AE()
 
 
-# TODO: Implement AE with association as a contrext manager
+# TODO: Implement AE with association as a context manager
 
 
 def test_assoc(scp_ip, scp_udp_port):

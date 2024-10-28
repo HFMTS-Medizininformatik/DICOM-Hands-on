@@ -1,11 +1,11 @@
 import logging
 from pynetdicom.sop_class import DigitalXRayImageStorageForPresentation
 
-from utils import read_dcm  #, plot_ds  # Only with pydicom>=3.0<3.1
+from utils import read_dcm  , plot_ds
 from utils import test_assoc, store_ds
 
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger(__name__)
 console_handler = logging.StreamHandler()
@@ -25,7 +25,7 @@ def main():
 
     # TODO: Implement strategy pattern to deal with different synthaxes
 
-    # plot_ds(ds)  # Only with pydicom>=3.0<3.1
+    plot_ds(ds)
 
     scp_ip = "127.0.0.1"
     scp_udp_port = 4242
