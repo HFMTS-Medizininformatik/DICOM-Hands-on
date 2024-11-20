@@ -4,6 +4,7 @@ from pynetdicom.sop_class import DigitalXRayImageStorageForPresentation
 from utils import read_dcm, plot_ds, test_assoc, store_ds
 
 
+#logging.basicConfig(level=logging.DEBUG)
 logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger(__name__)
@@ -17,6 +18,10 @@ def main():
     dsm_path = './data/image-000001.dcm'
     ds = read_dcm(dsm_path)
     logger.debug(ds)
+    """
+    Refer to Supported Service Classes:
+    - https://pydicom.github.io/pynetdicom/dev/service_classes/index.html
+    """
 
     tsyntax = ds.file_meta.TransferSyntaxUID
     logger.info("Transfer Syntax UID: " + tsyntax.name)
