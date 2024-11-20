@@ -4,16 +4,18 @@ Develop
 start ORTANC server:
 ```docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc```
 
-or with plugins enabled:
+or with plugins enabled (prefered method):
 ```docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc-plugins:1.12.4```
 
-login web app:
+login to web app:
 http://localhost:8042/
 username: orthanc
 password: orthanc
 
 run virtual environment:
 ```venv\Scripts\Activate.ps1```
+
+test your Python code...
 
 
 Install
@@ -28,6 +30,12 @@ download docker image (will be automatically done for you):
 
 download some example files:
 - https://www.dicomlibrary.com/
+
+setup virtual environment:
+```python -m venv venv```
+
+run virtual environment:
+```venv\Scripts\Activate.ps1```
 
 install dependencies:
 ```python -m pip install -r requirements.txt```
