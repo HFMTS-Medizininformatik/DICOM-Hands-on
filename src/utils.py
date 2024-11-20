@@ -25,13 +25,13 @@ def plot_ds(ds):
     logger.info("function 'plot_ds' start")
 
     # elem = ds[0x7fe0, 0x0010]
-    # logger.debug(elem)
+    # logger.info(elem)
     # raw_pixel_data = elem.value
 
     # Convert the pixel data to an ndarray
     arr = ds.pixel_array
-    logger.debug("Array shape: " + str(arr.shape))
-    logger.debug("Array data type: " + str(arr.dtype))
+    logger.info("Array shape: " + str(arr.shape))
+    logger.info("Array data type: " + str(arr.dtype))
 
     # Display the ndarray using matplotlib
     plt.imshow(arr, cmap="gray")
