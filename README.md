@@ -7,7 +7,10 @@ Install
 2. Activate virtual environment:
 ```venv\Scripts\Activate.ps1```
 
-3. Install project dependencies:
+3. Update package manager:
+```python -m pip install --upgrade pip```
+
+4. Install project dependencies:
 ```python -m pip install -r requirements.txt```
 
 
