@@ -26,8 +26,6 @@ def main():
     logger.info("Transfer Syntax UID: " + tsyntax.name)
     logger.info("Is compressed: " + str(tsyntax.is_compressed))
 
-    # TODO: Implement strategy pattern to deal with different synthaxes
-
     plot_ds(ds)
 
     scp_ip = "127.0.0.1"

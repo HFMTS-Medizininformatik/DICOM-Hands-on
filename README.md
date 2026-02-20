@@ -1,46 +1,41 @@
-Develop
-===
-
-start ORTANC server:
-```docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc```
-
-or with plugins enabled (prefered method):
-```docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc-plugins:1.12.4```
-
-login to web app:
-http://localhost:8042/
-username: orthanc
-password: orthanc
-
-run virtual environment:
-```venv\Scripts\Activate.ps1```
-
-test your Python code...
-
-
 Install
 ===
 
-download and install Docker-Desktop:
-- https://www.docker.com/products/docker-desktop/
-
-download docker image (will be automatically done for you):
-- https://www.orthanc-server.com/download.php
-- https://orthanc.uclouvain.be/book/users/docker.html
-
-download some example files:
-- https://www.dicomlibrary.com/
-
-setup virtual environment:
+1. Setup virtual environment:
 ```python -m venv venv```
 
-run virtual environment:
+2. Activate virtual environment:
 ```venv\Scripts\Activate.ps1```
 
-install dependencies:
+3. Install project dependencies:
 ```python -m pip install -r requirements.txt```
 
-read the docs:
-- https://pydicom.github.io/
-- https://pydicom.github.io/pydicom
-- https://pydicom.github.io/pynetdicom
+
+Setup
+===
+
+**1. Open Source PACS (Orthanc)**
+
+Start ORTANC server:  
+```docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc```
+
+... or with plugins enabled (prefered method):  
+```docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc-plugins:1.12.4```
+
+Login to web app: http://localhost:8042/
+> Username: `orthanc`  
+> Password: `orthanc`
+
+
+**2. Python Example (DICOM Modality)**
+
+Activate virtual environment, if not already done:  
+```venv\Scripts\Activate.ps1```
+
+Run project: ```python .\src\main.py```
+
+
+> Read the docs:
+> - https://pydicom.github.io/
+> - https://pydicom.github.io/pydicom
+> - https://pydicom.github.io/pynetdicom
