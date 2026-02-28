@@ -1,4 +1,4 @@
-# DICOM Hands-on
+# DICOM-Hands-on
 
 **Inhaltsverzeichniss:**
 
