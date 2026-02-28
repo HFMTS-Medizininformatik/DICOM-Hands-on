@@ -121,6 +121,8 @@ def test_assoc(scp_ip: str, scp_udp_port: int) -> None:
     -------
     None
     """
+    logger.info("function 'test_assoc' start")
+
     ae.add_requested_context("1.2.840.10008.1.1")
 
     assoc = ae.associate(scp_ip, scp_udp_port)
@@ -131,6 +133,8 @@ def test_assoc(scp_ip: str, scp_udp_port: int) -> None:
         assoc.release()
     else:
         logger.error("Failed to associate")
+    
+    logger.info("function 'test_assoc' end")
 
 
 def store_ds(scp_ip: str, scp_udp_port: int, ds: FileDataset) -> None:
@@ -150,10 +154,14 @@ def store_ds(scp_ip: str, scp_udp_port: int, ds: FileDataset) -> None:
     -------
     None
     """
-    sop_class_uid = ds.SOPClassUID
-    ae.add_requested_context(sop_class_uid)
+    logger.info("function 'store_ds' start")
 
+    sop_class_uid = ds.SOPClassUID
+    logger.info("SOP Class UID: " + str(sop_class_uid))
+
+    ae.add_requested_context(sop_class_uid)
     assoc = ae.associate(scp_ip, scp_udp_port)
+
     if assoc.is_established:
         status = assoc.send_c_store(ds)
         if status:
@@ -163,3 +171,5 @@ def store_ds(scp_ip: str, scp_udp_port: int, ds: FileDataset) -> None:
         assoc.release()
     else:
         logger.error('Association rejected, aborted or never connected')
+
+    logger.info("function 'store_ds' end")

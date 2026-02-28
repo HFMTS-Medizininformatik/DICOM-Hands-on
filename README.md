@@ -1,53 +1,122 @@
-Install Project Dependencies
-===
+# DICOM Hands-on
 
-1. Setup virtual environment:
-```python -m venv .venv```
+**Inhaltsverzeichniss:**
 
-2. Activate virtual environment:
-```.venv\Scripts\Activate.ps1```
-
-3. Update package manager:
-```python -m pip install --upgrade pip```
-
-4. Install project dependencies:
-```python -m pip install -r requirements.txt```
+-   Projektabhängigkeiten installieren
+-   Open-Source-PACS (Orthanc) einrichten
+-   DICOM-Modality testen (Python-Beispiel)
+-   Weiterführende Dokumentation
 
 
-Setup Open Source PACS (Orthanc)
-===
+## Projektabhängigkeiten installieren
 
-1. Start ORTANC server  
-a) ...default:  
-```docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc```  
-b) ... with plugins enabled (prefered method):  
-```docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc-plugins:1.12.4```
+### 1. Virtuelle Umgebung einrichten
 
-2. Login to web app: http://localhost:8042/
-> Username: `orthanc`  
-> Password: `orthanc`
+Erstellen Sie zunächst eine virtuelle Python-Umgebung:
+
+``` bash
+python -m venv .venv
+```
+
+### 2. Virtuelle Umgebung aktivieren (Windows PowerShell)
+
+``` bash
+.venv\Scripts\Activate.ps1
+```
+
+> Achtung: Nach der Aktivierung sollte `(.venv)` am Anfang der Kommandozeile erscheinen.
+
+### 3. Paketmanager (pip) aktualisieren
+
+``` bash
+python -m pip install --upgrade pip
+```
+
+### 4. Projektabhängigkeiten installieren
+
+``` bash
+python -m pip install -r requirements.txt
+```
 
 
-Test DICOM Modality (Python Example)
-===
+## Open-Source-PACS (Orthanc) einrichten
 
-1. Open a new terminal and activate virtual environment, if not already done:  
-```.venv\Scripts\Activate.ps1```
+Für dieses Projekt wird der DICOM-Server **Orthanc** als PACS
+verwendet.\
+Der Server wird bequem per Docker gestartet.
 
-2. Login to web app (http://localhost:8042/) and navigate to the `Orthanc Explorer 2` (find the black button at the bottom of the home screen)
+### 1. Orthanc-Server starten
 
-> There won't be any study available yet.
+#### a) Standardversion
 
-3. Run the example project: ```python .\src\main.py```
+``` bash
+docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc
+```
 
-> * It will print the dicom dataset of an example modality to the terminal
-> * And opens a window that shows the pixel image of a corresponding CT
+#### b) Mit aktivierten Plugins (empfohlene Variante)
 
-4. Close the window (pixel image) and update the web app and see a new study appear.
+``` bash
+docker run -p 4242:4242 -p 8042:8042 --rm jodogne/orthanc-plugins:1.12.4
+```
 
-5. Click on the eye icon for viewing the pixel image on the web app.
+**Erklärung der Ports:** 
 
-> Read the docs to learn more:
-> - https://pydicom.github.io/
-> - https://pydicom.github.io/pydicom
-> - https://pydicom.github.io/pynetdicom
+-   `4242` → DICOM-Port (C-STORE, C-ECHO etc.)  
+-   `8042` → Weboberfläche
+
+### 2. Anmeldung an der Weboberfläche
+
+http://localhost:8042/
+
+> **Zugangsdaten:**  
+> 
+> Benutzername: `orthanc`  
+> Passwort: `orthanc`  
+
+
+## DICOM-Modality testen (Python-Beispiel)
+
+### 1. Neues Terminal öffnen & virtuelle Umgebung aktivieren
+
+``` bash
+.venv\Scripts\Activate.ps1
+```
+
+### 2. Orthanc-Weboberfläche öffnen
+
+http://localhost:8042/
+
+Klicken Sie auf den schwarzen Button **„Orthanc Explorer 2"** am unteren
+Rand der Startseite.
+
+> Hinweis: Zu diesem Zeitpunkt wird noch keine Studie aufgelistet.
+
+### 3. Beispielprojekt ausführen
+
+``` bash
+python .\src\main.py
+```
+
+**Erwartetes Verhalten:**
+
+-   Das DICOM-Dataset einer Beispiel-Modality wird im Terminal
+    ausgegeben.
+-   Zusätzlich öffnet sich ein Fenster mit der Pixel-Darstellung eines
+    CT-Bildes.
+
+### 4. Bildfenster schliessen
+
+Schliessen Sie das geöffnete Bildfenster und aktualisieren Sie anschliessend die Weboberfläche.
+
+> Hinweis: Nun sollte eine neue Studie in Orthanc erscheinen.
+
+### 5. Studie im Webviewer anzeigen
+
+Klicken Sie auf das **Augen-Symbol**, um das Bild zu betrachten.
+
+
+## Weiterführende Dokumentation
+
+-   https://pydicom.github.io/
+-   https://pydicom.github.io/pydicom
+-   https://pydicom.github.io/pynetdicom
