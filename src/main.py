@@ -1,7 +1,7 @@
 import logging
 from pynetdicom.sop_class import DigitalXRayImageStorageForPresentation
 
-from utils import read_dcm, plot_ds, test_assoc, store_ds
+from utils import read_dcm, get_testdata, plot_ds, test_assoc, store_ds
 
 
 logging.basicConfig(level=logging.INFO)
@@ -14,13 +14,15 @@ logger.addHandler(console_handler)
 def main():
     logger.info("function 'main' start")
 
-    dsm_path = './data/image-000001.dcm'
-    ds = read_dcm(dsm_path)
+    # Read the dcm file from local folder and get the dataset
+    # dsm_path = './data/image-000001.dcm'
+    # ds = read_dcm(dsm_path)
+    # logger.info(ds)
+
+    # Get tge dcm file from pydicom testdata and get the dataset
+    dsm_name = 'CT_small.dcm'
+    ds = get_testdata(dsm_name)
     logger.info(ds)
-    """
-    Refer to Supported Service Classes:
-    - https://pydicom.github.io/pynetdicom/dev/service_classes/index.html
-    """
 
     tsyntax = ds.file_meta.TransferSyntaxUID
     logger.info("Transfer Syntax UID: " + tsyntax.name)

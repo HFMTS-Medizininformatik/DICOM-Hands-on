@@ -1,6 +1,8 @@
 import logging
-from pydicom import dcmread
 import matplotlib.pyplot as plt
+
+from pydicom import dcmread
+from pydicom.data import get_testdata_file
 from pynetdicom import AE
 
 
@@ -18,6 +20,17 @@ def read_dcm(path):
         ds = dcmread(file)
     
     logger.info("function 'read_dcm' end")
+    return ds
+
+
+def get_testdata(filename):
+    logger.info("function 'get_testdata' start")
+    
+    # Open the dcm file and read to dataset
+    file = get_testdata_file(filename)
+    ds = dcmread(file)
+    
+    logger.info("function 'get_testdata' end")
     return ds
 
 
@@ -42,10 +55,6 @@ def plot_ds(ds):
 
 # Instantiate the application entity as SCU
 ae = AE()
-
-
-# TODO: Implement AE with association as a context manager
-
 
 def test_assoc(scp_ip, scp_udp_port):
     ae.add_requested_context("1.2.840.10008.1.1")
