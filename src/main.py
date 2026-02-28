@@ -1,5 +1,4 @@
 import logging
-from pynetdicom.sop_class import DigitalXRayImageStorageForPresentation
 
 from utils import read_dcm, get_testdata, plot_ds, test_assoc, store_ds
 
@@ -33,7 +32,7 @@ def main():
     scp_ip = "127.0.0.1"
     scp_udp_port = 4242
     test_assoc(scp_ip, scp_udp_port)
-    store_ds(scp_ip, scp_udp_port, DigitalXRayImageStorageForPresentation, ds)
+    store_ds(scp_ip, scp_udp_port, ds)
 
     logger.info("function 'main' end")
 
